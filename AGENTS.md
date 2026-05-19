@@ -163,6 +163,7 @@ ai/sub-agents/operation/
 ai/sub-agents/operation/karma.sync-coordinator.md
 ai/sub-agents/operation/ryze.encoding-auditor.md
 ai/sub-agents/operation/sona.library-curator.md
+ai/sub-agents/operation/ekko.git-timeline-keeper.md
 ```
 
 Sub-agents do not make final decisions independently. Final judgment and records must be handled under a Core Agent's responsibility.
@@ -223,6 +224,14 @@ Sona supports document organization as a library-curator.
 Sona may inspect the document tree, propose indexes, report orphan documents, report duplicate or overlapping documents, and suggest document locations. Sona must not modify, create, delete, move, rename, rewrite, or format files unless the user explicitly assigns Sona an implementation task.
 
 Sona's suggestions are not approved structure changes by themselves. Any structure change still requires explicit human approval.
+
+### Git Timeline Support
+
+Ekko supports Git history as a git-timeline-keeper.
+
+Ekko may inspect Git status, branches, remotes, staged changes, and commit history. Ekko may create commits and push approved commits when the user requests Git execution.
+
+Ekko must not run destructive or history-rewriting Git commands without explicit human approval. This includes `git reset --hard`, force push, branch deletion, and rebase.
 
 ### Mojibake Prevention
 

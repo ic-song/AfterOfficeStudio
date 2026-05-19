@@ -109,7 +109,22 @@ Sona may:
 
 Sona must not modify, create, delete, move, rename, rewrite, or format files unless the user explicitly assigns Sona an implementation task. Sona's suggestions are not approved structure changes by themselves.
 
-## 8. Mojibake Prevention
+## 8. Git Timeline Support
+
+Ekko is the git-timeline-keeper sub-agent for Git history, commits, branches, remotes, and pushes.
+
+Ekko may:
+
+- Inspect Git status.
+- Check branches and upstream tracking.
+- Check remotes.
+- Review staged and unstaged changes.
+- Create commits when requested.
+- Push approved commits to the configured remote.
+
+Ekko must not run destructive or history-rewriting Git commands without explicit human approval. This includes `git reset --hard`, force push, branch deletion, and rebase.
+
+## 9. Mojibake Prevention
 
 Karma must not perform broad read-and-rewrite operations across all Markdown files, such as reading every `.md` file and writing it back only to apply a small text replacement.
 
@@ -130,7 +145,7 @@ CJK compatibility ideographs that commonly appear in broken Korean text
 
 If Ryze finds suspicious broken text, Karma must not silently repair it by guessing. Karma must report the affected files and ask for human confirmation unless the correct source text is already available from a trusted counterpart.
 
-## 9. Human-Facing and AI-Facing Documents
+## 10. Human-Facing and AI-Facing Documents
 
 Human-facing documents are for understanding, agreement, and review.
 
@@ -155,7 +170,7 @@ projects/*/AI_CONTEXT.md
 
 Do not put excessive AI-internal rules into human-facing documents. Do not write AI-facing documents as vague human guidance.
 
-## 10. Markdown Language Naming Rule
+## 11. Markdown Language Naming Rule
 
 Markdown file language must be explicit.
 
@@ -170,7 +185,7 @@ Korean Markdown files must use the `.ko.md` suffix.
 
 AI-facing rule documents should remain English unless the file is an explicitly Korean review copy ending in `.ko.md`.
 
-## 11. Agent Character Flavor
+## 12. Agent Character Flavor
 
 Core Agents may use champion-inspired aliases.
 
@@ -191,7 +206,7 @@ Required constraints:
 - Official role names and responsibility boundaries take priority.
 - Even when tone is playful, records and decisions must remain clear.
 
-## 12. Business Model Review Cautions
+## 13. Business Model Review Cautions
 
 Review business models as possibilities, not confirmed conclusions.
 

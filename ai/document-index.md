@@ -38,6 +38,7 @@ AI-facing rule documents are written in English. Human-facing Korean review copi
 | `ai/sub-agents/operation/karma.sync-coordinator.md` | documentation-sync-coordinator | Applies approved rule/document sync and repair edits |
 | `ai/sub-agents/operation/ryze.encoding-auditor.md` | encoding-auditor | Read-only encoding and mojibake auditor |
 | `ai/sub-agents/operation/sona.library-curator.md` | library-curator | Proposes document indexes, locations, and reference hygiene reports |
+| `ai/sub-agents/operation/ekko.git-timeline-keeper.md` | git-timeline-keeper | Manages Git status, commits, branches, remotes, and pushes |
 
 ## Human-Facing Documents
 

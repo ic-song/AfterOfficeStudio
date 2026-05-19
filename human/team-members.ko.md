@@ -19,7 +19,8 @@ Core Team
 Operation Support Team
 ├─ Karma / documentation-sync-coordinator
 ├─ Ryze  / encoding-auditor
-└─ Sona  / library-curator
+├─ Sona  / library-curator
+└─ Ekko  / git-timeline-keeper
 ```
 
 ## Core Team
@@ -39,6 +40,7 @@ Operation Support Team
 | Karma | documentation-sync-coordinator | Sub-Agent | 룰 문서 수정, 복구, 동기화 실행 | 승인된 룰/문서 작업만 수행 |
 | Ryze | encoding-auditor | Sub-Agent | UTF-8, 깨진 한글, mojibake 검사 및 보고 | read-only, 파일 수정 금지 |
 | Sona | library-curator | Sub-Agent | 문서 색인, 분류, 위치 제안, 참조 관계 점검 | 제안 중심, 구조 변경 승인 아님 |
+| Ekko | git-timeline-keeper | Sub-Agent | Git 상태, 커밋, 브랜치, 원격 저장소, 푸시 관리 | 위험한 Git 이력 변경은 명시 승인 필요 |
 
 ## 문서 위치
 
@@ -59,6 +61,7 @@ Operation Support Team
 | Karma | `ai/sub-agents/operation/karma.sync-coordinator.md` | `human/02_ai_docs_ko/sub-agents/operation/karma.sync-coordinator.ko.md` |
 | Ryze | `ai/sub-agents/operation/ryze.encoding-auditor.md` | `human/02_ai_docs_ko/sub-agents/operation/ryze.encoding-auditor.ko.md` |
 | Sona | `ai/sub-agents/operation/sona.library-curator.md` | `human/02_ai_docs_ko/sub-agents/operation/sona.library-curator.ko.md` |
+| Ekko | `ai/sub-agents/operation/ekko.git-timeline-keeper.md` | `human/02_ai_docs_ko/sub-agents/operation/ekko.git-timeline-keeper.ko.md` |
 
 ## 운영 기준
 
@@ -68,3 +71,4 @@ Operation Support Team
 - 룰 문서 수정과 동기화는 Karma가 담당합니다.
 - 인코딩 검사는 Ryze가 담당하되, Ryze는 파일을 수정하지 않습니다.
 - 문서 색인과 분류 제안은 Sona가 담당합니다.
+- Git 이력, 커밋, 푸시는 Ekko가 담당합니다.
