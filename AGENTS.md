@@ -179,6 +179,7 @@ AGENTS.md
 ai/rules.md
 ai/workflow.md
 ai/instructions/*.md
+agents/**/*.md
 projects/*/AI_CONTEXT.md
 human/02_ai_docs_ko/**/*.md
 ```
@@ -204,10 +205,27 @@ ai/rules.md <-> human/02_ai_docs_ko/rules.ko.md
 ai/workflow.md <-> human/02_ai_docs_ko/workflow.ko.md
 ai/instructions/*.md <-> Korean core-agent review copies under human/02_ai_docs_ko/
 ai/sub-agents/**/*.md <-> human/02_ai_docs_ko/sub-agents/**/*.ko.md
+agents/**/*.md <-> human/02_ai_docs_ko/agents/**/*.ko.md
 projects/*/AI_CONTEXT.md <-> human/02_ai_docs_ko/projects/*/AI_CONTEXT.ko.md
 ```
 
 If both sides changed and the meaning conflicts, Karma must not guess. Karma must report the conflict and ask for human confirmation.
+
+### Agent Directory Sync
+
+When an AI-facing Markdown file is created, changed, moved, or renamed under `agents/`, Karma must create or update the matching Korean review copy under `human/02_ai_docs_ko/agents/` in the same work session.
+
+The matching counterpart must preserve the same meaning and mirror the relative path.
+
+Examples:
+
+```text
+agents/AGENTS.md <-> human/02_ai_docs_ko/agents/AGENTS.ko.md
+agents/core/role-map.md <-> human/02_ai_docs_ko/agents/core/role-map.ko.md
+agents/teams/workspace/karma-rule-sync-agent.md <-> human/02_ai_docs_ko/agents/teams/workspace/karma-rule-sync-agent.ko.md
+```
+
+If no matching Korean review copy exists yet, Karma must treat that as a required sync task, not as an optional follow-up.
 
 ### Encoding Audit Support
 
@@ -232,6 +250,35 @@ Ekko supports Git history as a git-timeline-keeper.
 Ekko may inspect Git status, branches, remotes, staged changes, and commit history. Ekko may create commits and push approved commits when the user requests Git execution.
 
 Ekko must not run destructive or history-rewriting Git commands without explicit human approval. This includes `git reset --hard`, force push, branch deletion, and rebase.
+
+### Git Operation Standards
+
+Before Git execution, Ekko must check and report:
+
+```text
+1. Current branch
+2. Working tree status
+3. Staged and unstaged changes
+4. Remote and upstream target when push is requested
+```
+
+Git execution rules:
+
+- Use the current branch by default unless the user requests a different branch.
+- Do not switch branches when uncommitted changes may be affected; report the risk first.
+- Stage only the files that belong to the approved work scope.
+- Do not include unrelated user changes in a commit.
+- Do not commit unless the user requested a commit or clearly approved Git execution.
+- Do not amend commits, rebase, force push, delete branches, or discard changes without explicit human approval.
+- Do not push unless the user requested a push or clearly approved it.
+- Before pushing, confirm the target remote and branch.
+- After committing or pushing, report the commit hash and target branch.
+
+Commit message rules:
+
+- Keep commit messages concise and reviewable.
+- Use the user's language when the user clearly prefers one.
+- Prefer a practical format such as `docs: summarize agent git rules`.
 
 ### Mojibake Prevention
 
@@ -268,7 +315,45 @@ AI_CONTEXT.md    # AI-facing project context
 
 At the early stage, write minimum drafts first. Add more documents only when the project becomes concrete enough.
 
-## 10. Markdown Language Naming Rule
+## 10. Meeting Note Standards
+
+Meeting notes are human-facing operation records. They preserve discussion flow, major opinions, issues, decisions, deferred items, and next actions.
+
+The detailed Korean meeting-note standard is `human/meeting-note-rules.ko.md`.
+
+Default meeting note filename format:
+
+```text
+{topic}-회의록-{YYYY-MM-DD}.md
+```
+
+If the same topic has multiple meeting notes on the same date, append a number:
+
+```text
+{topic}-회의록-{YYYY-MM-DD}-01.md
+{topic}-회의록-{YYYY-MM-DD}-02.md
+```
+
+This filename format is an explicit exception for meeting-note operation documents when it conflicts with the general Korean `.ko.md` suffix rule.
+
+Meeting note storage:
+
+```text
+Workspace-level or unassigned meeting notes -> human/meetings/
+Project-specific meeting notes              -> projects/{project}/meetings/
+```
+
+Transcripts do not have a separate storage location. When needed, include the transcript as a `녹취록` section inside the meeting note file.
+
+Meeting notes must be written mainly in Korean. English terms, file names, paths, commands, code names, and Agent names may remain in their original form when needed.
+
+Meeting notes and transcripts are not separate files. When a transcript is needed, include it as a `녹취록` section inside the same meeting note file.
+
+Meeting notes must use Agent aliases for speaker labels, not Agent file names or paths. Agent alias and role references must depend on `agents/core/role-map.md`.
+
+Meeting notes must not hardcode the Agent alias list. If Agent aliases or roles change, update `agents/core/role-map.md` first.
+
+## 11. Markdown Language Naming Rule
 
 Markdown file language must be explicit.
 
@@ -294,7 +379,7 @@ projects/project-template/README.ko.md
 
 AI-facing rule documents should remain English unless the file is an explicitly Korean review copy ending in `.ko.md`.
 
-## 11. Change and Deletion Standards
+## 12. Change and Deletion Standards
 
 When changing files:
 

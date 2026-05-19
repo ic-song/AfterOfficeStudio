@@ -48,6 +48,8 @@ Viktor reviews feasibility, technical structure, risks, and testing standards.
 
 Senna organizes project status, decisions, and document freshness checks.
 
+When a meeting or discussion needs an operation record, Senna follows `human/meeting-note-rules.ko.md`. Workspace-level or unassigned meeting notes are stored under `human/meetings/`; project-specific meeting notes are stored under `projects/{project}/meetings/`. The meeting note should preserve discussion flow, major opinions, issues, decisions, deferred items, and next actions.
+
 ### 8. Create the Project
 
 If the idea is worth managing as a project, create a folder under `projects/`. At the early stage, use the `projects/project-template/` structure as the minimum standard.

@@ -46,6 +46,8 @@ AI-facing rule documents are written in English. Human-facing Korean review copi
 | --- | --- |
 | `human/document-index.ko.md` | Korean human-facing document index |
 | `human/team-members.ko.md` | Korean team member roster for all agents |
+| `human/meeting-note-rules.ko.md` | Korean meeting note and transcript-section writing standard |
+| `human/meetings/` | Workspace-level or unassigned meeting notes |
 | `human/01_*/company-overview.ko.md` | Korean company overview document |
 | `human/02_ai_docs_ko/AGENTS.ko.md` | Korean review copy of `AGENTS.md` |
 | `human/02_ai_docs_ko/rules.ko.md` | Korean review copy of `ai/rules.md` |
@@ -67,6 +69,7 @@ AI-facing rule documents are written in English. Human-facing Korean review copi
 | `projects/project-template/DECISIONS.md` | Decision log template | Human / AI |
 | `projects/project-template/DECISIONS.ko.md` | Korean decision log template | Human |
 | `projects/project-template/AI_CONTEXT.md` | AI-facing project context template | AI |
+| `projects/{project}/meetings/` | Project-specific meeting notes | Human |
 
 ## Maintenance Rules
 
