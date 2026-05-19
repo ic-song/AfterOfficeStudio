@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 ## 1. Purpose
 
@@ -17,14 +17,18 @@ after-office-studio/ = one company
 AI agents are role-based members of this company.
 
 ```text
-Swain  = ceo-agent
+Swain  = core-agent
 Shen   = pm-agent
-Lux    = planning-lead-agent
-Viktor = development-lead-agent
-Senna  = operation-lead-agent
+Lux    = product-lead-agent
+Viktor = engineering-lead-agent
+Senna  = workspace-lead-agent
+Karma  = rule-sync-agent
+Sona   = library-agent
+Ryze   = encoding-review-agent
+Ekko   = git-timeline-agent
 ```
 
-Champion names are aliases for identifying agents. Actual responsibility is determined by the official role name.
+Champion names are aliases for identifying agents. Actual responsibility, routing, and file paths are determined by `01_rule/agents/core/role-map.md`.
 
 ## 3. Document Priority
 
@@ -35,13 +39,14 @@ Priority order:
 ```text
 1. The user's or project owner's latest explicit instruction
 2. AGENTS.md
-3. ai/rules.md
-4. ai/instructions/{agent}.md
-5. projects/{project}/AI_CONTEXT.md
-6. ai/workflow.md
-7. projects/{project}/*.md
-8. human/*.md
-9. README.md
+3. 01_rule/ai/rules.md
+4. 01_rule/agents/core/role-map.md
+5. 01_rule/ai/instructions/{agent}.md
+6. 50_프로젝트/{project}/AI_CONTEXT.md
+7. 01_rule/ai/workflow.md
+8. 50_프로젝트/{project}/*.md
+9. human/*.md
+10. README.md
 ```
 
 If documents conflict, follow the higher-priority document and explicitly state the conflict. If documentation and actual files differ, do not guess. State the difference.
@@ -60,6 +65,7 @@ If documents conflict, follow the higher-priority document and explicitly state 
 10. Write AI-facing documents as clear execution standards.
 11. Review business models as possibilities, not confirmed conclusions.
 12. If revenue-related content is speculative, explicitly mark it as speculation.
+13. Follow `01_rule/ai/token-usage-rules.md` to avoid unnecessary broad reads, repeated reports, and excessive Agent handoffs.
 
 ## 5. Prohibited Actions
 
@@ -81,11 +87,15 @@ AI agents must not perform these actions without explicit human approval:
 Core Agents may use aliases inspired by League of Legends champion names.
 
 ```text
-Swain  = ceo-agent
+Swain  = core-agent
 Shen   = pm-agent
-Lux    = planning-lead-agent
-Viktor = development-lead-agent
-Senna  = operation-lead-agent
+Lux    = product-lead-agent
+Viktor = engineering-lead-agent
+Senna  = workspace-lead-agent
+Karma  = rule-sync-agent
+Sona   = library-agent
+Ryze   = encoding-review-agent
+Ekko   = git-timeline-agent
 ```
 
 Agents may use a tone inspired by each champion's atmosphere and personality.
@@ -99,7 +109,9 @@ Required constraints:
 
 ## 7. Core Agent Roles
 
-### Swain / ceo-agent
+Use `01_rule/agents/core/role-map.md` as the official role interface for Agent aliases, role names, ownership areas, and file paths.
+
+### Swain / core-agent
 
 Swain judges the overall direction.
 
@@ -119,7 +131,7 @@ Shen coordinates project flow.
 - Check progress status.
 - Manage project flow.
 
-### Lux / planning-lead-agent
+### Lux / product-lead-agent
 
 Lux handles planning.
 
@@ -130,7 +142,7 @@ Lux handles planning.
 - Organize requirements.
 - Draft business model possibilities.
 
-### Viktor / development-lead-agent
+### Viktor / engineering-lead-agent
 
 Viktor reviews development feasibility and technical structure.
 
@@ -140,7 +152,7 @@ Viktor reviews development feasibility and technical structure.
 - Summarize technical risks.
 - Review testing standards.
 
-### Senna / operation-lead-agent
+### Senna / workspace-lead-agent
 
 Senna handles operations and records.
 
@@ -150,23 +162,20 @@ Senna handles operations and records.
 - Check Notion/Git synchronization.
 - Summarize retrospectives.
 
-## 8. Sub-Agent Management
+## 8. Team Agent Management
 
-Sub-agents are detailed role cards that Core Agents may reference or call when needed.
+Team Agents are detailed role cards that Core Agents may reference or call when needed.
 
-For now, keep sub-agent files minimal. The only active sub-agent file is Karma for rule-document synchronization.
+The active organization-style Agent files live under `01_rule/agents/`. Legacy files under `01_rule/ai/instructions/` and `01_rule/ai/sub-agents/` may remain as compatibility references, but new Agent definitions should depend on `01_rule/agents/core/role-map.md` and the matching role card under `01_rule/agents/`.
 
 ```text
-ai/sub-agents/planning/
-ai/sub-agents/development/
-ai/sub-agents/operation/
-ai/sub-agents/operation/karma.sync-coordinator.md
-ai/sub-agents/operation/ryze.encoding-auditor.md
-ai/sub-agents/operation/sona.library-curator.md
-ai/sub-agents/operation/ekko.git-timeline-keeper.md
+01_rule/agents/core/role-map.md
+01_rule/agents/core/*.md
+01_rule/agents/teams/**/*.md
+01_rule/ko/agents/**/*.ko.md
 ```
 
-Sub-agents do not make final decisions independently. Final judgment and records must be handled under a Core Agent's responsibility.
+Team Agents do not make final decisions independently. Final judgment and records must be handled under the responsible Core Agent or human direction.
 
 ### Rule Document Ownership
 
@@ -176,12 +185,13 @@ Rule-related documents include:
 
 ```text
 AGENTS.md
-ai/rules.md
-ai/workflow.md
-ai/instructions/*.md
-agents/**/*.md
-projects/*/AI_CONTEXT.md
-human/02_ai_docs_ko/**/*.md
+01_rule/ai/rules.md
+01_rule/ai/workflow.md
+01_rule/ai/token-usage-rules.md
+01_rule/ai/instructions/*.md
+01_rule/agents/**/*.md
+50_프로젝트/*/AI_CONTEXT.md
+01_rule/ko/**/*.md
 ```
 
 Core Agents may review these documents and request changes, but they must not directly edit rule-related Markdown files. Karma is responsible for applying rule-document edits and checking consistency between AI-facing English documents and human-facing Korean review copies.
@@ -200,29 +210,29 @@ Karma updates the matching counterpart to preserve the same meaning.
 Examples:
 
 ```text
-AGENTS.md <-> human/02_ai_docs_ko/AGENTS.ko.md
-ai/rules.md <-> human/02_ai_docs_ko/rules.ko.md
-ai/workflow.md <-> human/02_ai_docs_ko/workflow.ko.md
-ai/instructions/*.md <-> Korean core-agent review copies under human/02_ai_docs_ko/
-ai/sub-agents/**/*.md <-> human/02_ai_docs_ko/sub-agents/**/*.ko.md
-agents/**/*.md <-> human/02_ai_docs_ko/agents/**/*.ko.md
-projects/*/AI_CONTEXT.md <-> human/02_ai_docs_ko/projects/*/AI_CONTEXT.ko.md
+AGENTS.md <-> 01_rule/ko/AGENTS.ko.md
+01_rule/ai/rules.md <-> 01_rule/ko/rules.ko.md
+01_rule/ai/workflow.md <-> 01_rule/ko/workflow.ko.md
+01_rule/ai/token-usage-rules.md <-> 01_rule/ko/token-usage-rules.ko.md
+01_rule/ai/instructions/*.md <-> Korean core-agent review copies under 01_rule/ko/
+01_rule/ai/sub-agents/**/*.md <-> 01_rule/ko/sub-agents/**/*.ko.md
+01_rule/agents/**/*.md <-> 01_rule/ko/agents/**/*.ko.md
+50_프로젝트/*/AI_CONTEXT.md <-> 50_프로젝트/*/AI_CONTEXT.ko.md
 ```
 
 If both sides changed and the meaning conflicts, Karma must not guess. Karma must report the conflict and ask for human confirmation.
 
 ### Agent Directory Sync
 
-When an AI-facing Markdown file is created, changed, moved, or renamed under `agents/`, Karma must create or update the matching Korean review copy under `human/02_ai_docs_ko/agents/` in the same work session.
+When an AI-facing Markdown file is created, changed, moved, or renamed under `01_rule/agents/`, Karma must create or update the matching Korean review copy under `01_rule/ko/agents/` in the same work session.
 
 The matching counterpart must preserve the same meaning and mirror the relative path.
 
 Examples:
 
 ```text
-agents/AGENTS.md <-> human/02_ai_docs_ko/agents/AGENTS.ko.md
-agents/core/role-map.md <-> human/02_ai_docs_ko/agents/core/role-map.ko.md
-agents/teams/workspace/karma-rule-sync-agent.md <-> human/02_ai_docs_ko/agents/teams/workspace/karma-rule-sync-agent.ko.md
+01_rule/agents/core/role-map.md <-> 01_rule/ko/agents/core/role-map.ko.md
+01_rule/agents/teams/workspace/karma-rule-sync-agent.md <-> 01_rule/ko/agents/teams/workspace/karma-rule-sync-agent.ko.md
 ```
 
 If no matching Korean review copy exists yet, Karma must treat that as a required sync task, not as an optional follow-up.
@@ -234,6 +244,17 @@ Ryze supports Karma as an encoding-auditor.
 Ryze is a read-only auditor by role.
 
 Ryze may inspect Markdown files, validate UTF-8 readability, and report encoding risks. Ryze must not modify, create, delete, move, rename, rewrite, or format files. If a document requires repair, Ryze reports the issue and Karma applies the approved edit.
+
+Ryze is not a mandatory step for every document change. Ryze is activated by encoding risk.
+
+Ryze activation rules:
+
+- Shen decides whether Ryze is needed when planning the work flow.
+- Karma decides whether Ryze is needed during rule-document edits or synchronization.
+- Senna may request Ryze when Korean operation records need encoding or readability checks.
+- Ekko may request Ryze before commit or push when the document change set is large or encoding-sensitive.
+- Simple edits may use changed-file UTF-8 checks without a separate Ryze report.
+- Large Korean document edits, suspected mojibake, encoding-related user requests, document repair, and high-risk sync work should activate Ryze.
 
 ### Library Curation Support
 
@@ -284,7 +305,7 @@ Commit message rules:
 
 Karma must not perform broad read-and-rewrite operations across all Markdown files, such as reading every `.md` file and writing it back only to apply a small text replacement.
 
-Before and after rule-document sync work, Ryze must check both:
+Before and after high-risk rule-document sync work, Ryze should check both:
 
 ```text
 1. UTF-8 validity
@@ -319,7 +340,7 @@ At the early stage, write minimum drafts first. Add more documents only when the
 
 Meeting notes are human-facing operation records. They preserve discussion flow, major opinions, issues, decisions, deferred items, and next actions.
 
-The detailed Korean meeting-note standard is `human/meeting-note-rules.ko.md`.
+The detailed Korean meeting-note standard is `01_rule/ko/meeting-note-rules.ko.md`.
 
 Default meeting note filename format:
 
@@ -339,8 +360,8 @@ This filename format is an explicit exception for meeting-note operation documen
 Meeting note storage:
 
 ```text
-Workspace-level or unassigned meeting notes -> human/meetings/
-Project-specific meeting notes              -> projects/{project}/meetings/
+Workspace-level or unassigned meeting notes -> 90_기록실/회의록/
+Project-specific meeting notes              -> 50_프로젝트/{project}/meetings/
 ```
 
 Transcripts do not have a separate storage location. When needed, include the transcript as a `녹취록` section inside the meeting note file.
@@ -349,9 +370,9 @@ Meeting notes must be written mainly in Korean. English terms, file names, paths
 
 Meeting notes and transcripts are not separate files. When a transcript is needed, include it as a `녹취록` section inside the same meeting note file.
 
-Meeting notes must use Agent aliases for speaker labels, not Agent file names or paths. Agent alias and role references must depend on `agents/core/role-map.md`.
+Meeting notes must use Agent aliases for speaker labels, not Agent file names or paths. Agent alias and role references must depend on `01_rule/agents/core/role-map.md`.
 
-Meeting notes must not hardcode the Agent alias list. If Agent aliases or roles change, update `agents/core/role-map.md` first.
+Meeting notes must not hardcode the Agent alias list. If Agent aliases or roles change, update `01_rule/agents/core/role-map.md` first.
 
 ## 11. Markdown Language Naming Rule
 
@@ -366,15 +387,16 @@ Use this naming rule:
 
 Korean Markdown files must use the `.ko.md` suffix.
 
+Repository-level `README.md` is an explicit exception and may be written in Korean as the primary human-facing repository overview.
+
 Examples:
 
 ```text
 README.md
-README.ko.md
-human/document-index.ko.md
-human/02_ai_docs_ko/AGENTS.ko.md
-projects/project-template/README.md
-projects/project-template/README.ko.md
+01_rule/ko/document-index.ko.md
+01_rule/ko/AGENTS.ko.md
+50_프로젝트/project-template/README.md
+50_프로젝트/project-template/README.ko.md
 ```
 
 AI-facing rule documents should remain English unless the file is an explicitly Korean review copy ending in `.ko.md`.
@@ -402,3 +424,33 @@ Do not delete unless all conditions are met:
 ```
 
 "It seems unused" is not a valid reason for deletion.
+
+If a file appears to require deletion but explicit deletion approval has not been given, do not delete it. Move or propose moving it to:
+
+```text
+99_아카이브/삭제대기/
+```
+
+Files under `99_아카이브/삭제대기/` are pending human deletion approval. They are not active operating documents.
+
+When moving a file to `99_아카이브/삭제대기/`, record the original path, deletion-pending path, move date, and move reason in:
+
+```text
+90_기록실/삭제대기/삭제대기-이력.ko.md
+```
+
+When moving a file into a deletion-pending folder or deleting a file from that folder, keep a `.gitkeep` file there so Git continues tracking the folder.
+
+When a file is actually deleted from `99_아카이브/삭제대기/`, record the deletion in:
+
+```text
+90_기록실/삭제대기/삭제대기-이력.ko.md
+```
+
+The deletion record must include the original path, deletion-pending path, deletion-pending request subject, actual deletion date, deletion approver, deletion reason, replacement or backup status, and processing Agent.
+
+Before a Git push, Ekko must check deleted files shown by `git status --short`.
+
+If a deleted file was approved for actual deletion, Ekko must make sure `90_기록실/삭제대기/삭제대기-이력.ko.md` records the actual deletion date, deletion approver, deletion reason, processing Agent, and `삭제완료` status before pushing.
+
+If a deleted file is not recorded or the deletion approval is unclear, Ekko must stop the push and ask for human confirmation.

@@ -1,63 +1,71 @@
 # After Office Studio
 
-After Office Studio is a personal workspace for exploring, planning, designing, and developing multiple project ideas into executable work.
+After Office Studio는 여러 프로젝트 아이디어를 탐색, 기획, 설계하고 실행 가능한 작업으로 발전시키기 위한 개인 작업공간입니다.
 
-The workspace starts as a one-person studio, but its documents and role structure assume that more collaborators may join later. This repository is not a single app or service. It is an early-stage AI collaboration studio for managing and growing multiple project candidates.
+이 저장소는 하나의 앱이나 서비스가 아니라, 여러 프로젝트 후보를 관리하고 성장시키기 위한 초기 단계의 AI 협업 스튜디오입니다.
 
-Korean version: `README.ko.md`
+## 목적
 
-## Purpose
+- 흩어진 아이디어를 프로젝트 후보로 정리합니다.
+- 각 프로젝트의 목적, 사용자, 문제, MVP 범위를 문서화합니다.
+- Notion은 기획과 운영 기록의 중심으로 사용할 수 있습니다.
+- Git은 실행 가능한 기준, 규칙, 템플릿, 문서 산출물의 중심으로 사용합니다.
+- AI Agent는 기획, 개발 검토, 운영, 기록을 보조합니다.
 
-- Organize scattered ideas into project candidates.
-- Document each project's purpose, users, problems, and MVP scope.
-- Use Notion as the center for planning and operational records.
-- Use Git as the center for executable standards, rules, templates, and document outputs.
-- Use AI agents to support planning, development review, operation, and records.
-
-## Folder Structure
+## 기본 폴더 구조
 
 ```text
 after-office-studio/
 |-- README.md
-|-- README.ko.md
 |-- AGENTS.md
+|-- 01_rule/
+|   |-- agents/
+|   |-- ai/
+|   `-- ko/
 |-- human/
-|-- ai/
-`-- projects/
+|-- 10_아이디어/
+|-- 50_프로젝트/
+|-- 90_기록실/
+`-- 99_아카이브/
 ```
 
-- `README.md`: English repository overview
-- `README.ko.md`: Korean repository overview
-- `AGENTS.md`: Top-level AI working rules
-- `human/`: Human-facing documents
-- `ai/`: AI-facing rules and role documents
-- `projects/`: Project documents and templates
+- `README.md`: 저장소 소개
+- `AGENTS.md`: AI가 작업할 때 따르는 최상위 규칙
+- `01_rule/`: AI 운영 규칙, Agent 역할 카드, 한국어 검토본
+- `01_rule/agents/`: 조직도형 Agent 역할 카드와 역할 매핑
+- `01_rule/ai/`: AI가 실제 작업할 때 보는 규칙, workflow, 역할 지침
+- `01_rule/ko/`: 사람이 검토하는 한국어 룰 문서와 한국어 검토본
+- `human/`: 회사소개, 회의록 같은 사람용 운영 기록
+- `10_아이디어/`: `50_프로젝트/`로 승격되기 전의 프로젝트 후보 아이디어
+- `50_프로젝트/`: 실제 프로젝트와 프로젝트 템플릿
+- `90_기록실/`: 회의록, 문서 이동 이력, 삭제대기 이력 같은 운영 기록
+- `99_아카이브/`: 보관 문서 또는 삭제 승인 대기 문서
 
-## Document Indexes
+## 문서 인덱스
 
-- AI-facing index: `ai/document-index.md`
-- Human-facing Korean index: `human/document-index.ko.md`
+- AI용 인덱스: `01_rule/ai/document-index.md`
+- 사람용 한국어 인덱스: `01_rule/ko/document-index.ko.md`
 
 ## Core Team
 
 | Alias | Official Role | Main Responsibility |
 | --- | --- | --- |
-| Swain | ceo-agent | Direction, priority, and business-model possibility review |
-| Shen | pm-agent | Workflow, role assignment, and progress management |
-| Lux | planning-lead-agent | Idea clarification, problem definition, and requirements |
-| Viktor | development-lead-agent | Technical feasibility, structure, risks, and testing standards |
-| Senna | operation-lead-agent | Status management, decision records, and document freshness |
+| Swain | core-agent | 전체 방향, 우선순위, 사업 가능성 검토 |
+| Shen | pm-agent | 작업 흐름, 역할 배정, 진행 관리 |
+| Lux | product-lead-agent | 아이디어 구체화, 문제 정의, 요구사항 정리 |
+| Viktor | engineering-lead-agent | 기술 가능성, 구조, 리스크, 테스트 기준 검토 |
+| Senna | workspace-lead-agent | 상태 관리, 결정 기록, 문서 최신성 확인 |
 
-Champion names are aliases only. Actual responsibility is determined by the official role name.
+Champion 이름은 Agent를 구분하기 위한 별칭입니다. 실제 책임과 파일 경로 기준은 `01_rule/agents/core/role-map.md`를 따릅니다.
 
-## Current Stage
+## 현재 단계
 
-The repository is in its initial structure-building stage.
+이 저장소는 초기 구조를 정리하고 운영 기준을 만드는 단계입니다.
 
-Current priorities:
+현재 우선순위:
 
-1. Keep README and AGENTS standards clear.
-2. Separate human-facing and AI-facing documents.
-3. Maintain Core Agent role documents.
-4. Maintain project templates.
-5. Register real project candidates when ready.
+1. README와 AGENTS 기준을 명확하게 유지합니다.
+2. Agent 역할 매핑과 역할 카드를 최신 상태로 유지합니다.
+3. 규칙, 아이디어, 프로젝트, 운영 기록의 경계를 명확히 구분합니다.
+4. 프로젝트 템플릿을 유지합니다.
+5. 실제 프로젝트 후보가 준비되면 등록합니다.
