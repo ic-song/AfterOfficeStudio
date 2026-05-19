@@ -194,6 +194,7 @@ Git execution rules:
 - Do not commit unless the user requested a commit or clearly approved Git execution.
 - Do not amend commits, rebase, force push, delete branches, or discard changes without explicit human approval.
 - Do not push unless the user requested a push or clearly approved it.
+- Rule-related document changes are pre-approved for commit and push after validation. If the work scope is limited to rule-related documents and their required indexes or records, Ekko may commit and push without asking again.
 - Before pushing, confirm the target remote and branch.
 - After committing or pushing, report the commit hash and target branch.
 

@@ -177,6 +177,7 @@ Git 실행 규칙:
 - 사용자가 커밋을 요청했거나 Git 실행을 명확히 승인한 경우에만 커밋합니다.
 - 명시적인 사람의 승인 없이 amend, rebase, force push, branch deletion, change discard를 하지 않습니다.
 - 사용자가 push를 요청했거나 명확히 승인한 경우에만 push합니다.
+- 룰 관련 문서 변경은 검증 후 커밋과 푸쉬가 사전 승인된 것으로 봅니다. 작업 범위가 룰 관련 문서와 필수 인덱스 또는 이력 문서로 제한된다면 Ekko는 다시 묻지 않고 커밋과 푸쉬를 진행할 수 있습니다.
 - push 전 대상 remote와 branch를 확인합니다.
 - commit 또는 push 후 commit hash와 대상 branch를 보고합니다.
 

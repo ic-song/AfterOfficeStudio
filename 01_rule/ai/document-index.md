@@ -122,9 +122,7 @@ Use this table when an AI-facing instruction needs an English meaning for a Kore
 | --- | --- |
 | `99_아카이브/삭제대기/` | Files waiting for explicit deletion approval |
 | `99_아카이브/삭제대기/.gitkeep` | Placeholder so Git tracks the deletion-pending folder |
-| `99_아카이브/삭제대기/README.ko.md` | Deprecated root Korean README pending deletion approval |
-| `99_아카이브/삭제대기/01_rule-agents-AGENTS.md` | Deprecated Agent directory guide pending deletion approval |
-| `99_아카이브/삭제대기/01_rule-ko-agents-AGENTS.ko.md` | Deprecated Korean review copy of the Agent directory guide pending deletion approval |
+| `90_기록실/삭제대기/삭제대기-이력.ko.md` | Deletion-pending and actual deletion history |
 
 ## Maintenance Rules
 
