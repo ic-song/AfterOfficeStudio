@@ -39,6 +39,8 @@ Do not do the following without explicit human approval:
 
 When deletion is needed, first confirm the target, reason, replacement location, and backup status.
 
+In this repository, when the user says "delete" or asks an Agent to delete a file, the Agent must interpret that request as moving the file to `99_아카이브/삭제대기/`, not as permanent deletion. AI agents must not permanently delete files directly.
+
 If a file appears to require deletion but explicit deletion approval has not been given, do not delete it. Move or propose moving it to `99_아카이브/삭제대기/`.
 
 Files under `99_아카이브/삭제대기/` are pending human deletion approval. They are not active operating documents.

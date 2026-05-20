@@ -415,6 +415,8 @@ When changing files:
 
 Deletion must be handled carefully.
 
+In this repository, when the user says "delete" or asks an Agent to delete a file, the Agent must interpret that request as moving the file to `99_아카이브/삭제대기/`, not as permanent deletion. AI agents must not permanently delete files directly.
+
 Do not delete unless all conditions are met:
 
 ```text
