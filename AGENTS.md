@@ -452,6 +452,8 @@ When a file is actually deleted from `99_아카이브/삭제대기/`, record the
 
 The deletion record must include the original path, deletion-pending path, deletion-pending request subject, actual deletion date, deletion approver, deletion reason, replacement or backup status, and processing Agent.
 
+History Markdown files whose names end with `-이력.md` or `-이력.ko.md` must be managed as date-based sections. Each date section must have its own table using the same columns, and the newest date section must appear first.
+
 Before a Git push, Ekko must check deleted files shown by `git status --short`.
 
 If a deleted file was approved for actual deletion, Ekko must make sure `90_기록실/삭제대기/삭제대기-이력.ko.md` records the actual deletion date, deletion approver, deletion reason, processing Agent, and `삭제완료` status before pushing.
