@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#101814" />
+    <title>Rune Grove Prototype</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="game-panel" aria-label="Rune Grove prototype">
+        <canvas id="game" width="390" height="760"></canvas>
+
+        <div class="hud top">
+          <div>
+            <span class="label">TIME</span>
+            <strong id="time">60</strong>
+          </div>
+          <div>
+            <span class="label">LV</span>
+            <strong id="level">1</strong>
+          </div>
+          <div>
+            <span class="label">RUNES</span>
+            <strong id="runes">0</strong>
+          </div>
+        </div>
+
+        <div class="hud bottom">
+          <div class="bar">
+            <span id="xpBar"></span>
+          </div>
+          <button id="pauseBtn" type="button">Pause</button>
+        </div>
+
+        <div id="startScreen" class="overlay">
+          <div class="modal">
+            <p class="eyebrow">Rune Grove</p>
+            <h1>수정을 지키고 룬을 모아라</h1>
+            <p>
+              60초 동안 몬스터를 막고, 레벨업마다 주문을 골라 성장하세요.
+              런이 끝나면 룬으로 영구 강화를 올릴 수 있습니다.
+            </p>
+            <div class="upgrade-row">
+              <button class="meta" data-meta="damage" type="button">
+                <span>공격 강화</span>
+                <strong id="metaDamage">Lv 0</strong>
+              </button>
+              <button class="meta" data-meta="magnet" type="button">
+                <span>흡수 강화</span>
+                <strong id="metaMagnet">Lv 0</strong>
+              </button>
+              <button class="meta" data-meta="reward" type="button">
+                <span>룬 강화</span>
+                <strong id="metaReward">Lv 0</strong>
+              </button>
+            </div>
+            <p class="wallet">보유 룬: <strong id="bankedRunes">0</strong></p>
+            <button id="startBtn" class="primary" type="button">Start Run</button>
+          </div>
+        </div>
+
+        <div id="levelScreen" class="overlay hidden">
+          <div class="modal">
+            <p class="eyebrow">Level Up</p>
+            <h2>강화를 선택하세요</h2>
+            <div id="choices" class="choices"></div>
+          </div>
+        </div>
+
+        <div id="resultScreen" class="overlay hidden">
+          <div class="modal">
+            <p class="eyebrow">Run Complete</p>
+            <h2 id="resultTitle">생존 성공</h2>
+            <p id="resultSummary"></p>
+            <button id="againBtn" class="primary" type="button">Back to Grove</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>

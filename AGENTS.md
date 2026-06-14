@@ -222,6 +222,14 @@ AGENTS.md <-> 01_rule/ko/AGENTS.ko.md
 
 If both sides changed and the meaning conflicts, Karma must not guess. Karma must report the conflict and ask for human confirmation.
 
+### AI Utility Documents
+
+Markdown documents created primarily to reduce AI token usage or help AI work routing should use English by default.
+
+A separate Korean counterpart is not mandatory for AI utility documents outside `01_rule/`.
+
+`01_rule/` is the exception: rule-related documents under `01_rule/` must continue to follow the required English/Korean review-copy synchronization rules.
+
 ### Agent Directory Sync
 
 When an AI-facing Markdown file is created, changed, moved, or renamed under `01_rule/agents/`, Karma must create or update the matching Korean review copy under `01_rule/ko/agents/` in the same work session.
@@ -356,7 +364,7 @@ If the same topic has multiple meeting notes on the same date, append a number:
 {topic}-회의록-{YYYY-MM-DD}-02.md
 ```
 
-This filename format is an explicit exception for meeting-note operation documents when it conflicts with the general Korean `.ko.md` suffix rule.
+This filename format is the default for Korean meeting-note operation documents.
 
 Meeting note storage:
 
@@ -382,11 +390,14 @@ Markdown file language must be explicit.
 Use this naming rule:
 
 ```text
-*.md     = English or language-neutral standard document
-*.ko.md  = Korean document
+{korean-name}.md = Korean original document
+{english-name}.md = English or language-neutral original document
+{english-name}.ko.md = Korean translation of an English original document
 ```
 
-Korean Markdown files must use the `.ko.md` suffix.
+Do not add `.ko` to a Markdown file that already has a Korean filename.
+
+Use `.ko.md` only when a Korean file is a translation or review copy of an English original file.
 
 Repository-level `README.md` is an explicit exception and may be written in Korean as the primary human-facing repository overview.
 
@@ -394,13 +405,32 @@ Examples:
 
 ```text
 README.md
+10_아이디어/양산형-모바일-게임-안드로이드/안내.md
 01_rule/ko/document-index.ko.md
 01_rule/ko/AGENTS.ko.md
 50_프로젝트/project-template/README.md
 50_프로젝트/project-template/README.ko.md
 ```
 
-AI-facing rule documents should remain English unless the file is an explicitly Korean review copy ending in `.ko.md`.
+AI-facing rule documents should remain English unless the file is an explicitly Korean translation or review copy ending in `.ko.md`.
+
+### File-Type Naming Rules
+
+Use these naming rules by file purpose:
+
+| File Type | Naming Rule | Language Rule | Korean Counterpart |
+| --- | --- | --- | --- |
+| AI routing index | `INDEX.md` | English by default | Not required outside `01_rule/` |
+| Korean original human document | `{korean-name}.md` | Korean | Do not create `{korean-name}.ko.md` |
+| English or neutral original document | `{english-name}.md` | English or language-neutral | Create `{english-name}.ko.md` only when a Korean translation or review copy is needed |
+| Korean translation of English original | `{english-name}.ko.md` | Korean | Must correspond to `{english-name}.md` |
+| Rule document under `01_rule/ai/` | `{english-name}.md` | English | Required Korean review copy under `01_rule/ko/` when a sync pair exists |
+| Agent role card under `01_rule/agents/` | `{english-name}.md` | English | Required matching `01_rule/ko/agents/**/*.ko.md` |
+| Meeting note | `{topic}-회의록-{YYYY-MM-DD}.md` | Korean by default | No separate transcript file; include transcript in the same note when needed |
+| History log | `{topic}-이력.md` or `{topic}-이력.ko.md` | Match the document origin | Use date-based sections with newest first |
+| Deletion-pending archive bundle | `{subject}-{reason}-{YYYY-MM-DD}/` | Descriptive path | Record in `90_기록실/삭제대기/삭제대기-이력.ko.md` |
+
+When rules conflict, prefer the more specific file-type rule.
 
 ## 12. Change and Deletion Standards
 

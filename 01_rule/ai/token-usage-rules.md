@@ -30,6 +30,31 @@ AGENTS.md
 01_rule/agents/core/role-map.md
 ```
 
+## First-Depth Folder Indexes
+
+Each active top-level work folder should have an `INDEX.md` file.
+
+These index files are AI routing aids for token reduction. Write and maintain their content in English, even when the filename is Korean.
+
+Do not create `.ko.md` counterparts for AI utility indexes outside `01_rule/`. Rule documents under `01_rule/` are the exception and must keep their required Korean review copies.
+
+Purpose:
+
+- Route work without broad folder scans.
+- Show the current contents and important child documents.
+- Tell agents which file to open next.
+
+Default lookup order:
+
+```text
+1. README.md
+2. 01_rule/ai/document-index.md
+3. {top-level-folder}/INDEX.md
+4. Only the specific document needed for the task
+```
+
+Do not read every file under a top-level folder when its `INDEX.md` can identify the needed document.
+
 ## Agent Activation
 
 Use the smallest role set that can safely handle the work.

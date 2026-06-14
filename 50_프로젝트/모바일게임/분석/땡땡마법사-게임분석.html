@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>판타지 디펜스 모바일게임 기획 방향</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+      --line: #d8dee8;
+      --soft: #eef3fa;
+      --accent: #2457c5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.68;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 32px auto;
+      padding: 34px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    header {
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 34px 0 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 22px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--soft);
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 12px 0 20px;
+      padding: 16px;
+      border-radius: 8px;
+      background: #1f2937;
+      color: #f9fafb;
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    ul {
+      margin: 10px 0 18px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 14px 0 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 4px;
+    }
+
+    .summary div {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+
+    .summary strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 34px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 680px) {
+      main {
+        width: 100%;
+        margin: 0;
+        padding: 22px 16px;
+        border-width: 0;
+        border-radius: 0;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>판타지 디펜스 모바일게임 기획 방향</h1>
+    </header>
+
+    <section class="summary" aria-label="요약">
+      <div>
+        <strong>장르</strong>
+        스테이지형 로그라이크 디펜스
+      </div>
+      <div>
+        <strong>기획 목표</strong>
+        짧은 반복, 스킬 선택, 영구 성장, 광고/과금 보상 구조를 갖춘 모바일게임을 만든다.
+      </div>
+    </section>
+
+    <h2>한 줄 컨셉</h2>
+    <p>플레이어가 마법이나 스킬을 선택하며 몰려오는 적을 막고, 실패하면 성장 재화로 강화해서 다음 스테이지에 도전하는 모바일 디펜스 게임.</p>
+
+    <h2>분위기와 컨셉</h2>
+    <p>마법, 어둠, 몬스터, 던전, 주문을 중심으로 한 판타지 세계관을 기본 분위기로 잡는다.</p>
+    <p>너무 무겁고 사실적인 다크 판타지보다는, 모바일에서 가볍게 접근할 수 있는 캐주얼 판타지 톤이 적합하다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>요소</th>
+            <th>방향</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>세계관</td><td>마법사가 몬스터 웨이브를 막는 판타지 방어전</td></tr>
+          <tr><td>분위기</td><td>신비롭고 어두운 던전 감성 + 캐주얼한 모바일 톤</td></tr>
+          <tr><td>캐릭터</td><td>마법사, 정령, 소환수, 룬, 마법 생물</td></tr>
+          <tr><td>적</td><td>슬라임, 고블린, 언데드, 박쥐, 그림자 몬스터</td></tr>
+          <tr><td>배경</td><td>숲, 폐허, 던전, 마법 탑, 지하 성소</td></tr>
+          <tr><td>시각 효과</td><td>화염, 번개, 얼음, 독, 암흑, 폭발</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>전체 루프</h2>
+    <pre><code>스테이지 입장
+-&gt; 적 웨이브 시작
+-&gt; 레벨업 또는 웨이브 보상으로 스킬 선택
+-&gt; 스킬 조합으로 몬스터 방어
+-&gt; 보스 또는 최종 웨이브 클리어
+-&gt; 재화, 장비, 보석 획득
+-&gt; 영구 성장
+-&gt; 다음 스테이지 도전</code></pre>
+
+    <h2>플레이 안 루프</h2>
+    <pre><code>적 등장
+-&gt; 자동 공격 또는 스킬 발동
+-&gt; 경험치 또는 웨이브 보상 획득
+-&gt; 스킬 3개 중 1개 선택
+-&gt; 조합 강화
+-&gt; 더 강한 웨이브 방어</code></pre>
+
+    <h2>플레이 밖 루프</h2>
+    <pre><code>골드 획득
+-&gt; 장비 강화
+-&gt; 보석 장착
+-&gt; 스킬 해금
+-&gt; 능력치 상승
+-&gt; 막힌 스테이지 재도전</code></pre>
+
+    <h2>핵심 재미</h2>
+    <ul>
+      <li>매판 스킬 선택이 달라진다.</li>
+      <li>좋은 스킬 조합을 찾는 재미가 있다.</li>
+      <li>막힌 구간을 성장으로 뚫는 재미가 있다.</li>
+      <li>숫자가 강해지는 성장감이 있다.</li>
+      <li>짧게 한 판 돌리는 반복성이 있다.</li>
+    </ul>
+
+    <h2>핵심 시스템</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>시스템</th>
+            <th>역할</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>스테이지</td><td>진행 목표</td></tr>
+          <tr><td>웨이브</td><td>긴장감과 난이도 상승</td></tr>
+          <tr><td>스킬 선택</td><td>매판 변주</td></tr>
+          <tr><td>스킬 조합</td><td>공략과 전략 요소</td></tr>
+          <tr><td>장비 강화</td><td>장기 성장</td></tr>
+          <tr><td>보석/룬</td><td>세팅 다양화</td></tr>
+          <tr><td>보스</td><td>클리어 성취</td></tr>
+          <tr><td>일일 보상</td><td>재방문 유도</td></tr>
+          <tr><td>쿠폰/이벤트</td><td>커뮤니티와 복귀 유도</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>수익화 지점</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>지점</th>
+            <th>방식</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>스테이지 실패 후</td><td>보상형 광고로 부활 또는 재도전</td></tr>
+          <tr><td>클리어 후</td><td>광고 보고 보상 2배</td></tr>
+          <tr><td>일일 보상</td><td>광고 보고 추가 보상</td></tr>
+          <tr><td>성장 재화 부족</td><td>인앱결제 패키지</td></tr>
+          <tr><td>장비/보석 뽑기</td><td>뽑기 또는 패키지</td></tr>
+          <tr><td>광고 제거</td><td>소액 결제</td></tr>
+          <tr><td>시즌/이벤트</td><td>한정 패스</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>MVP로 줄인 구조</h2>
+    <p>처음부터 장비, 보석, 쿠폰, 이벤트까지 만들면 범위가 커진다. MVP는 아래 정도로 줄인다.</p>
+    <pre><code>1. 스테이지 10개
+2. 적 웨이브
+3. 자동 공격
+4. 스킬 선택 6~9개
+5. 스테이지 클리어/실패
+6. 골드 획득
+7. 기본 강화 3종
+8. 보상형 광고 자리 설계</code></pre>
+
+    <h2>MVP 스킬 예시</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>스킬</th>
+            <th>역할</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>파이어볼</td><td>단일 공격</td></tr>
+          <tr><td>번개</td><td>랜덤 적 공격</td></tr>
+          <tr><td>얼음</td><td>이동속도 감소</td></tr>
+          <tr><td>독</td><td>지속 피해</td></tr>
+          <tr><td>폭발</td><td>범위 피해</td></tr>
+          <tr><td>관통탄</td><td>여러 적 타격</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>양산형 게임틀 요약</h2>
+    <pre><code>짧은 판
+자동 전투
+스킬 선택
+웨이브 방어
+영구 성장
+재도전
+광고/과금 보상</code></pre>
+
+    <h2>확장 가능 테마</h2>
+    <ul>
+      <li>마법사 디펜스</li>
+      <li>궁수 디펜스</li>
+      <li>로봇 방어전</li>
+      <li>좀비 방어전</li>
+      <li>고양이 왕국 방어전</li>
+      <li>회사원 방어전</li>
+    </ul>
+
+    <h2>현재 방향</h2>
+    <p>이 구조는 우리가 만들 모바일 양산형 게임의 초기 방향으로 적합하다.</p>
+    <p>이 방향을 기준으로 MVP 범위, 수익화 지점, 전투 템포, 아트 톤을 이어서 구체화한다.</p>
+
+    <footer>
+      Fantasy Defense Mobile Game Direction
+    </footer>
+  </main>
+</body>
+</html>

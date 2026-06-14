@@ -24,10 +24,15 @@ AI-facing rule documents are written in English. Korean review copies and Korean
 | Path | Purpose |
 | --- | --- |
 | `01_rule/` | Rule documents, Agent role cards, and Korean review copies |
+| `01_rule/INDEX.md` | Folder-level index for rule documents |
 | `10_아이디어/` | Project candidate ideas before promotion to `50_프로젝트/` |
+| `10_아이디어/INDEX.md` | Folder-level index for project candidate ideas |
 | `50_프로젝트/` | Active projects and project templates |
-| `90_기록실/` | Operation records such as meeting notes, document move history, and deletion-pending history |
+| `50_프로젝트/INDEX.md` | Folder-level index for active projects and project templates |
+| `90_기록실/` | Operation records such as meeting notes, document history, and deletion-pending history |
+| `90_기록실/INDEX.md` | Folder-level index for operation records |
 | `99_아카이브/` | Archived or deletion-pending documents |
+| `99_아카이브/INDEX.md` | Folder-level index for archived and deletion-pending documents |
 | `human/` | Human-facing records that have not yet moved to a numbered folder |
 
 ## Korean Path Mapping
@@ -40,7 +45,7 @@ Use this table when an AI-facing instruction needs an English meaning for a Kore
 | `50_프로젝트/` | `50_project/` | Active projects and project templates |
 | `90_기록실/` | `90_record/` | Operation records |
 | `90_기록실/회의록/` | `90_record/meetings/` | Workspace-level or unassigned meeting notes |
-| `90_기록실/문서이동/문서이동-이력.ko.md` | `90_record/document-move-history.md` | Document and folder move history |
+| `90_기록실/문서이력/문서이력.md` | `90_record/document-history.md` | Document creation, move, and rename history |
 | `90_기록실/삭제대기/삭제대기-이력.ko.md` | `90_record/deletion-pending-history.md` | Deletion-pending and actual deletion history |
 | `99_아카이브/` | `99_archive/` | Archive |
 | `99_아카이브/삭제대기/` | `99_archive/deletion-pending/` | Files waiting for explicit deletion approval |
@@ -88,9 +93,10 @@ Use this table when an AI-facing instruction needs an English meaning for a Kore
 
 | Path | Purpose |
 | --- | --- |
+| `90_기록실/INDEX.md` | Folder-level index for operation records |
 | `90_기록실/회의록/` | Workspace-level or unassigned meeting notes |
 | `90_기록실/회의록/.gitkeep` | Placeholder so Git tracks the workspace meeting-note folder |
-| `90_기록실/문서이동/문서이동-이력.ko.md` | Korean document move history log |
+| `90_기록실/문서이력/문서이력.md` | Korean document creation, move, and rename history log |
 | `90_기록실/삭제대기/삭제대기-이력.ko.md` | Korean deletion-pending and actual deletion history log |
 
 ## Ideas
@@ -98,28 +104,27 @@ Use this table when an AI-facing instruction needs an English meaning for a Kore
 | Path | Purpose |
 | --- | --- |
 | `10_아이디어/` | Project candidate ideas before project promotion |
+| `10_아이디어/INDEX.md` | Folder-level index for project candidate ideas |
 | `10_아이디어/.gitkeep` | Placeholder so Git tracks the folder |
 
 ## Project Template Documents
 
 | Path | Purpose | Audience |
 | --- | --- | --- |
-| `50_프로젝트/project-template/README.md` | Human-facing project introduction template | Human |
-| `50_프로젝트/project-template/README.ko.md` | Korean project introduction template | Human |
-| `50_프로젝트/project-template/PROJECT.md` | Project overview template | Human |
-| `50_프로젝트/project-template/PROJECT.ko.md` | Korean project overview template | Human |
-| `50_프로젝트/project-template/TASKS.md` | Task list template | Human |
-| `50_프로젝트/project-template/TASKS.ko.md` | Korean task list template | Human |
-| `50_프로젝트/project-template/DECISIONS.md` | Decision log template | Human / AI |
-| `50_프로젝트/project-template/DECISIONS.ko.md` | Korean decision log template | Human |
-| `50_프로젝트/project-template/AI_CONTEXT.md` | AI-facing project context template | AI |
-| `50_프로젝트/project-template/AI_CONTEXT.ko.md` | Korean review copy of the project template AI context |
+| `50_프로젝트/INDEX.md` | Folder-level index for active projects and templates | AI |
+| `50_프로젝트/project-template/INDEX.md` | AI routing index for the project template | AI |
+| `50_프로젝트/project-template/안내.md` | Korean project overview template | Human |
+| `50_프로젝트/project-template/기획.md` | Korean planning and MVP scope template | Human |
+| `50_프로젝트/project-template/수익모델.md` | Korean revenue model and close criteria template | Human |
+| `50_프로젝트/project-template/작업.md` | Korean task list template | Human |
+| `50_프로젝트/project-template/결정.md` | Korean decision log template | Human |
 | `50_프로젝트/{project}/meetings/` | Project-specific meeting notes | Human |
 
 ## Archive
 
 | Path | Purpose |
 | --- | --- |
+| `99_아카이브/INDEX.md` | Folder-level index for archived and deletion-pending documents |
 | `99_아카이브/삭제대기/` | Files waiting for explicit deletion approval |
 | `99_아카이브/삭제대기/.gitkeep` | Placeholder so Git tracks the deletion-pending folder |
 | `90_기록실/삭제대기/삭제대기-이력.ko.md` | Deletion-pending and actual deletion history |
